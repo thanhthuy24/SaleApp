@@ -3,6 +3,7 @@
 
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from app import db, app
+from sqlalchemy.orm import relationship
 
 #class đại diện cho 1 bảng => bảng Category trong database
 class Category(db.Model): #db.Model chính là kế thùa
@@ -12,6 +13,18 @@ class Category(db.Model): #db.Model chính là kế thùa
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)
 
+    # tạo mối quan hệ vs product => đặt product trong nháy để khi máy dịch,
+    # chạy qua product bên dưới rồi mới nhận biết product bên trong relationship'product'
+    products = relationship('Product', backref='category',
+                            lazy=True)  # backref thêm tự động vào product 1 trường category
+    # => category là đối tượng chứ không còn là id nữa
+
+    # lazy: truy vấn lười, chờ tác động lên biến products thì mới bắt đầu truy vấn
+
+    #để hiển thị tên thì ghi đè phương thức toString
+    def __str__(self):
+        return self.name
+
 class Product(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)
@@ -19,11 +32,14 @@ class Product(db.Model):
     image = Column(String(100))
     category_id = Column(Integer, ForeignKey(Category.id), nullable=False)
 
+    def __str__(self):
+        return self.name
+
 if __name__ == '__main__':
     #phải chạy trong ngữ cảnh của ứng dụng
     with app.app_context():
         # tạo database cho các class đã tạo ở trên
-        # db.create_all()
+         #db.create_all()
 
         #tạo dữ liệu category
         # c1 = Category(name='Mobile')

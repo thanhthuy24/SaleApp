@@ -13,4 +13,6 @@ def index():
     return render_template('index.html',categories=cates, products=prods)
 
 if __name__ == '__main__':
+    #import để lúc chạy thì chạy luôn cái module nay
+    from app import admin
     app.run(debug=True)
