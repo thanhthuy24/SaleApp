@@ -2,4 +2,22 @@
 
 {% block body %}
 <h2 class="text-center text-info">THỐNG KÊ BÁO CÁO</h2>
+
+{% if current_user.is_authenticated %}
+<h2 class="text-center text-info">TRANG QUAN TRI</h2>
+<h2 class="text-center text-info">HELLO {{curent_user.name}}</h2>
+{% else %}
+<form method="post" action="/admin/login">
+    <div class="mb-3 mt-3">
+        <label for="username" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="username to login">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endif  %}
+
 {% endblock %}

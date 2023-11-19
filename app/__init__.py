@@ -3,6 +3,7 @@ from flask import Flask
 from urllib.parse import quote
 #lớp đối tượng
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 app = Flask(__name__)
 #trong admin cần có 1 session để gửi qua lại, session nằm ở server nên cần thm 1 secret_key để mã hóa
@@ -12,3 +13,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:%s@localhost/salea
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 db = SQLAlchemy(app=app)
+
+#tạo đối tượng để nó control cái login
+login = LoginManager(app=app)
