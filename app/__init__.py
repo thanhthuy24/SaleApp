@@ -12,6 +12,9 @@ app.secret_key = 'sdfsjfg38r78436elkfhuiefhjsdbfdf'
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:%s@localhost/saleappdb?charset=utf8mb4" % quote('Admin123@')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
+#định nghĩa số lượng phần tử trong 1 trang
+app.config["PAGESIZE"] = 4
+
 db = SQLAlchemy(app=app)
 
 #tạo đối tượng để nó control cái login

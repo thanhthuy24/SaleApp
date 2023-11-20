@@ -1,3 +1,5 @@
+import math
+
 from flask import render_template, request, redirect #chuyển giữa các man hình khác nhau
 import dao
 from app import app, login
@@ -6,11 +8,16 @@ from flask_login import login_user
 @app.route('/')
 def index():
     kw = request.args.get('kw')
+    cate_id = request.args.get('cate_id')
+    page = request.args.get('page')
 
     cates = dao.load_categories()
-    prods = dao.load_products(kw)
+    prods = dao.load_products(kw, cate_id, page)
 
-    return render_template('index.html',categories=cates, products=prods)
+    num = dao.count_product()
+
+    return render_template('index.html',categories=cates, products=prods,
+                           pages=math.ceil(num/app.config['PAGESIZE']))
 
 @app.route('/admin/login', methods=['post'])
 def admin_login():
