@@ -1,7 +1,7 @@
 import math
 
-from flask import render_template, request, redirect #chuyển giữa các man hình khác nhau
-import dao
+from flask import render_template, request, redirect, jsonify, session  #redirect -- chuyển giữa các man hình khác nhau
+import dao, utils
 from app import app, login
 from flask_login import login_user
 
@@ -29,6 +29,49 @@ def admin_login():
         login_user(user=user)
 
     return redirect('/admin')
+
+@app.route("/api/cart", methods=['post'])
+def add_to_cart():
+    '''
+    {
+        "cart": {
+            "1":{
+                "id":"1",
+                "name": "abc",
+                "price": 123,
+                "quantity":1
+            },
+             "2":{
+                "id":"2",
+                "name": "abc",
+                "price": 123,
+                "quantity":1
+            }
+        }
+    }
+    :return:
+    '''
+
+    data = request.json
+    #print(data)
+    cart = session.get('cart')
+    if cart is None:
+        cart = {}
+
+    id = str(data.get("id"))
+    if id in cart: #sp co trong gio
+        cart[id]['quantity'] += 1
+    else: #sp chua co trong gio
+        cart[id] = {
+            "id": id,
+            "name": data.get("name"),
+            "price": data.get("price"),
+            "quantity": 1
+        }
+
+    session['cart'] = cart
+    #print(cart)
+    return jsonify(utils.count_cart(cart))
 
 @login.user_loader
 def get_user(user_id):

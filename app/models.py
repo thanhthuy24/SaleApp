@@ -72,38 +72,38 @@ if __name__ == '__main__':
         db.session.commit()
 
         #tạo dữ liệu category
-        # c1 = Category(name='Mobile')
-        # c2 = Category(name='Laptop')
-        # # session quan trọng trong mô hình ORM
-        # # hầu như mọi ngôn ngữ đều dùng, có thể khác cú pháp
-        # db.session.add(c1)
-        # db.session.add(c2)
-        # # #gọi commit => tạo ra 2 câu insert into
-        # db.session.commit()
+        c1 = Category(name='Mobile')
+        c2 = Category(name='Laptop')
+        # session quan trọng trong mô hình ORM
+        # hầu như mọi ngôn ngữ đều dùng, có thể khác cú pháp
+        db.session.add(c1)
+        db.session.add(c2)
+        # #gọi commit => tạo ra 2 câu insert into
+        db.session.commit()
 
         #tạo dữ liệu product
-        # p1 = Product(name='iPhone 13', price='20000000', category_id=1,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p2 = Product(name='SamSung S20FE', price='16000000', category_id=1,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p3 = Product(name='Laptop Asus Vivobook', price='19000000', category_id=2,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p4 = Product(name='iPhone 15', price='28000000', category_id=1,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p5 = Product(name='SamSung Note 21', price='30000000', category_id=1,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p6 = Product(name='Laptop MSI', price='25000000', category_id=2,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # p7 = Product(name='Laptop Dell', price='20500000', category_id=2,
-        #              image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
-        #
-        # db.session.add_all([p1, p2, p3, p4, p5, p6, p7])
-        # db.session.commit()
+        p1 = Product(name='iPhone 13', price='20000000', category_id=1,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p2 = Product(name='SamSung S20FE', price='16000000', category_id=1,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p3 = Product(name='Laptop Asus Vivobook', price='19000000', category_id=2,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p4 = Product(name='iPhone 15', price='28000000', category_id=1,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p5 = Product(name='SamSung Note 21', price='30000000', category_id=1,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p6 = Product(name='Laptop MSI', price='25000000', category_id=2,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        p7 = Product(name='Laptop Dell', price='20500000', category_id=2,
+                     image='https://th.bing.com/th/id/OIP.D2L5Emr_tkvju5Hilr22DgHaHa?rs=1&pid=ImgDetMain')
+
+        db.session.add_all([p1, p2, p3, p4, p5, p6, p7])
+        db.session.commit()
 
 #phải chạy create_all trước!!!

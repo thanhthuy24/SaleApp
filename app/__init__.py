@@ -9,7 +9,7 @@ app = Flask(__name__)
 #trong admin cần có 1 session để gửi qua lại, session nằm ở server nên cần thm 1 secret_key để mã hóa
 app.secret_key = 'sdfsjfg38r78436elkfhuiefhjsdbfdf'
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:%s@localhost/saleappdb?charset=utf8mb4" % quote('Admin123@')
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:%s@localhost/saleappdb?charset=utf8mb4" % quote('Admin@123')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 #định nghĩa số lượng phần tử trong 1 trang
